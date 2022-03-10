@@ -38,8 +38,8 @@ namespace BestRestaurant.Controllers
 
     public ActionResult Details(int id)
     {
-      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.restaurantId == id);
-      return view(thisRestaurant);
+      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      return View(thisRestaurant);
     }
 
     public ActionResult Edit(int id)
@@ -53,7 +53,7 @@ namespace BestRestaurant.Controllers
     public ActionResult Edit(Restaurant restaurant)
     {
       _db.Entry(restaurant).State = EntityState.Modified;
-      _db.DaveChanges();
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
@@ -64,12 +64,12 @@ namespace BestRestaurant.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(ind id)
+    public ActionResult DeleteConfirmed(int id)
     {
       var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
       _db.Restaurants.Remove(thisRestaurant);
       _db.SaveChanges();
-      return RedirectToAction("Inderx");
+      return RedirectToAction("Index");
     }
   }
 }

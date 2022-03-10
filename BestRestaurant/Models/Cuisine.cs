@@ -6,7 +6,7 @@ namespace BestRestaurant.Models
   {
     public Cuisine()
     {
-      this.Restaurants = new HashSet<BestRestaurant>();
+      this.Restaurants = new HashSet<Restaurant>();
     }
 
     public int CuisineId { get; set; }
